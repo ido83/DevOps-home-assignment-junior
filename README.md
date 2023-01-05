@@ -1,30 +1,32 @@
 # DevOps-home-assignment-junior
 
- 1. Fork the following repository https://github.com/pdurbin/maven-hello-world
- if you don’t know what fork is google it, apparently, they have a primitive yet quite an efficient device which could answer most of your questions, it’s called Google!
-2. Understand this repository -
-   a. Which programming language is this? </br>
-   b. What is maven? </br>
-   c. How does maven work? </br>
-   d. What is this pom.xml everyone keeps mentioning? </br>
-3. In order to build the above repository, use Azure Pipelines or GitHub Actions. 
-   Hint: GitHub Actions is easier
-4. Change the code:
-   a.  Add your name to the "Hello World" message. </br>
-   b. Set  Jar version to 1.0.0 </br>
-5. Create a simple pipeline which would do the following actions:
-   a. Increase the Patch part of the jar version ( 1.0.0 - > 1.0.1) automatically </br>
-   b. Compile the code </br>
-   c. Package it into an artifact </br>
-   d. Create an artifact item for the build </br>
-   e. Create a docker image  containing the artifact  - use Dockerfile: </br>
-       i. Tag the Docker image as the the Jar version automatically. </br>
-       ii. The  Docker image shouldn't run with root </br>
-   f. Push the docker image that was created in the previous step to Docker Hub </br>
-   g. Download and run the docker image. </br>
-6. Once it’s running, we would come and pick you up immediately </br>
+## Before starting the exercise:
+1. Make sure you have Visual Studio or Visual Studio Tools
+(mandatory: msbuild.exe, vc++)
+2. Create a free account in Microsoft Azure DevOps
+3. Create a .NET CLI "Hello world" project
+4. Create a new repo in Azure Devops (free account)
+5. Upload the project files to branch 'main'
 
-## Bonus – do as much as possible from the above using Multistage Docker 
-If you encounter any issues with these primitive technologies, we highly recommend using Google, we believe you’ll be able to get most of the answers from this tool.
+## The exercise:
+Fork this repo first.  if you don’t know what fork is google it.
+
+### Phase A: Create a new yaml pipeline:
+Note: Pipeline must run on a clean machine or Microsoft Container
+1. Build the solution
+2. Upload the product to Artifactory or Azure DevOps Artifact, with property of your choice (You can run artifactory server on a container)
+3. Increment version number (you decide how)
+4. Print version number to the console (from AssemblyInfo.cs)
+### Phase B: Create another pipeline Or use conditions:
+1. Create a new branch, from 'main'
+2. Run SonarQube scan and publish to server
+3. Add library project and build the solution
+4. Create NuGet file from the DLL
+5. Upload the product to Artifactory (NuGet repo type), with another
+property of your choice (you decide)
+6. Print version number to the console (from AssemblyInfo.cs)
+7. Create a tag with the name test_[version_number]
+8. Push the changes (version number + tag)
+9. Send email to an address of your choice
 Good Luck!
 
